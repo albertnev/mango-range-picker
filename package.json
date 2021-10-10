@@ -1,0 +1,43 @@
+{
+  "name": "mango-range-picker",
+  "version": "1.0.0",
+  "description": "Custom range picker created using React ",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve",
+    "lint": "eslint --fix",
+    "build": "webpack",
+    "test": "jest",
+    "prepare": "husky install"
+  },
+  "author": "Albert Nevado",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@testing-library/react": "^12.1.2",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.0",
+    "jest": "^27.2.5",
+    "prettier": "^2.4.1",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.1",
+    "prop-types": "^15.7.2"
+  }
+}
