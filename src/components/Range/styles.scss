@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+
+.range__input_container {
+  font-weight: bold;
+  color: $darkAccentColor;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.range__container {
+  position: relative;
+}

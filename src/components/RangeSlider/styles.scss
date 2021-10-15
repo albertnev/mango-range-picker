@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+$handlerSize: 16px;
+$handlerBiggerSize: $handlerSize + 6;
+$selectedRangeHeight: 2px;
+$borderWidth: 2px;
+
+.slider__wrapper {
+  position: relative;
+  padding-left: calc(#{$handlerBiggerSize} / 2);
+  height: $handlerBiggerSize;
+  box-sizing: initial;
+}
+
+.slider__container {
+  width: calc(100% - #{$handlerBiggerSize});
+  height: $handlerSize;
+  position: absolute;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: $selectedRangeHeight;
+    top: ($handlerSize / 2 - $selectedRangeHeight / 2);
+    position: absolute;
+    background: $lightBackgroundColor;
+  }
+}
+
+.slider__handler {
+  top: -($borderWidth/2);
+  width: $handlerSize;
+  height: $handlerSize;
+  border: $borderWidth solid $lightAccentColor;
+  border-radius: 50%;
+  background-color: $backgroundColor;
+  display: inline-block;
+  position: absolute;
+  transform: translateX(-50%);
+
+  &:hover {
+    width: $handlerBiggerSize;
+    height: $handlerBiggerSize;
+    top: (($handlerSize - $handlerBiggerSize) / 2 - ($borderWidth / 2));
+  }
+}
+
+.slider__active_range {
+  position: absolute;
+  top: ($handlerSize / 2 - $selectedRangeHeight / 2);
+  height: 2px;
+  background: $lightAccentColor;
+}

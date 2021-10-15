@@ -1,5 +1,6 @@
+import React from 'react';
 import { render } from '@testing-library/react';
-import { Range } from './';
+import { Range } from '.';
 
 describe('Range component', () => {
   describe('Normal range', () => {

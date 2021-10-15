@@ -1,0 +1,15 @@
+.rangeInput__container {
+  display: inline-block;
+}
+
+.rangeInput__input {
+  all: unset;
+  -moz-appearance: textfield;
+  text-align: center;
+  display: inline-block;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
