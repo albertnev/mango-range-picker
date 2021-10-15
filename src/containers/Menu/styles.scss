@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+.menu {
+  background-color: $darkAccentColor;
+  padding: 20px;
+  width: 100%;
+
+  a {
+    color: $backgroundColor;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 20px;
+
+    &.menu__a_active {
+      color: $lightAccentColor;
+    }
+  }
+}
