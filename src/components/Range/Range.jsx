@@ -56,6 +56,7 @@ const Range = ({
           max={max}
           currency=""
           value={minValue}
+          readOnly={!!rangeValues.length}
           onChange={updateMinValue}
           onBlur={sanitizeMinValue}
         />
@@ -64,6 +65,7 @@ const Range = ({
           min={min}
           max={max}
           value={maxValue}
+          readOnly={!!rangeValues.length}
           onChange={updateMaxValue}
           onBlur={sanitizeMaxValue}
         />

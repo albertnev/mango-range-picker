@@ -28,7 +28,8 @@ const useRangeRefs = ({ max, min }) => {
   const calculateValueByPosition = (position) => {
     const positionPercentage = (position * 100) / sliderRef.current.offsetWidth;
     const valueDifference = max - min;
-    return Math.round(min + (valueDifference * positionPercentage) / 100);
+    const value = min + (valueDifference * positionPercentage) / 100;
+    return Math.round(value * 100) / 100;
   };
 
   const setMinHandlerPosition = (position) => {

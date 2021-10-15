@@ -10,6 +10,7 @@
     "import/prefer-default-export": 0
   },
   "env": {
-    "jest": true
+    "jest": true,
+    "browser": true
   }
 }

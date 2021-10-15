@@ -43,6 +43,11 @@ $borderWidth: 2px;
     width: $handlerBiggerSize;
     height: $handlerBiggerSize;
     top: (($handlerSize - $handlerBiggerSize) / 2 - ($borderWidth / 2));
+    cursor: grab;
+  }
+
+  &:active {
+    cursor: grabbing;
   }
 }
 
