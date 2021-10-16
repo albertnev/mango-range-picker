@@ -96,6 +96,7 @@ const RangeSlider = ({
 
   return (
     <div
+      data-testid="slider-wrapper"
       className={styles.slider__wrapper}
       onMouseLeave={disableMouseDragging}
       onMouseEnter={disableMouseDragging}
@@ -122,7 +123,6 @@ const RangeSlider = ({
         />
         <span
           className={styles.slider__handler}
-          style={{ left: 100 }}
           data-testid="max-handler"
           tabIndex={0}
           role="button"
@@ -141,6 +141,8 @@ RangeSlider.propTypes = rangePropTypes;
 RangeSlider.defaultProps = {
   min: undefined,
   max: undefined,
+  minHandlerValue: undefined,
+  maxHandlerValue: undefined,
   rangeValues: [],
 };
 

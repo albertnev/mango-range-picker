@@ -13,35 +13,38 @@ const Range = ({
   rangeValues,
   size,
 }) => {
-  const [minValue, setMinValue] = useState(minHandlerValue || min);
-  const [maxValue, setMaxValue] = useState(maxHandlerValue || max);
+  const [minValue, setMinValue] = useState(
+    minHandlerValue || min || rangeValues[0]
+  );
+  const [maxValue, setMaxValue] = useState(
+    maxHandlerValue || max || rangeValues[rangeValues.length - 1]
+  );
+
+  const [inputMinValue, setInputMinValue] = useState(minValue);
+  const [inputMaxValue, setInputMaxValue] = useState(maxValue);
 
   const updateMinValue = (value) => {
-    let normalizedValue = value;
-    if (normalizedValue < min) normalizedValue = min;
-    if (normalizedValue > max) normalizedValue = max - 1;
-    setMinValue(normalizedValue);
+    setInputMinValue(value);
   };
 
   const updateMaxValue = (value) => {
-    let normalizedValue = value;
-    if (normalizedValue > max) normalizedValue = max;
-    if (normalizedValue < min) normalizedValue = min + 1;
-    setMaxValue(normalizedValue);
+    setInputMaxValue(value);
   };
 
-  const sanitizeMaxValue = () => {
-    let sanitizedValue = maxValue;
-    if (sanitizedValue <= minValue) sanitizedValue = minValue + 1;
-    if (sanitizedValue > max) sanitizedValue = max;
-    setMaxValue(sanitizedValue);
-  };
-
-  const sanitizeMinValue = () => {
-    let sanitizedValue = minValue;
+  const sanitizeMinValue = (value) => {
+    let sanitizedValue = value;
     if (sanitizedValue >= maxValue) sanitizedValue = maxValue - 1;
     if (sanitizedValue < min) sanitizedValue = min;
+    setInputMinValue(sanitizedValue);
     setMinValue(sanitizedValue);
+  };
+
+  const sanitizeMaxValue = (value) => {
+    let sanitizedValue = value;
+    if (sanitizedValue <= minValue) sanitizedValue = minValue + 1;
+    if (sanitizedValue > max) sanitizedValue = max;
+    setInputMaxValue(sanitizedValue);
+    setMaxValue(sanitizedValue);
   };
 
   return (
@@ -55,7 +58,7 @@ const Range = ({
           min={min}
           max={max}
           currency=""
-          value={minValue}
+          value={inputMinValue}
           readOnly={!!rangeValues.length}
           onChange={updateMinValue}
           onBlur={sanitizeMinValue}
@@ -64,7 +67,7 @@ const Range = ({
         <RangeInput
           min={min}
           max={max}
-          value={maxValue}
+          value={inputMaxValue}
           readOnly={!!rangeValues.length}
           onChange={updateMaxValue}
           onBlur={sanitizeMaxValue}
@@ -76,8 +79,8 @@ const Range = ({
         rangeValues={rangeValues}
         minHandlerValue={minValue}
         maxHandlerValue={maxValue}
-        onMinValueChange={updateMinValue}
-        onMaxValueChange={updateMaxValue}
+        onMinValueChange={sanitizeMinValue}
+        onMaxValueChange={sanitizeMaxValue}
       />
     </div>
   );
@@ -92,6 +95,8 @@ Range.propTypes = {
 Range.defaultProps = {
   min: undefined,
   max: undefined,
+  minHandlerValue: undefined,
+  maxHandlerValue: undefined,
   rangeValues: [],
   size: 250,
 };

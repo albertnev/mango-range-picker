@@ -19,12 +19,14 @@ const RangeInput = ({
       className={styles.rangeInput__container}
       data-testid="range-input-container"
       onClick={focusInput}
+      onFocus={focusInput}
       role="textbox"
       tabIndex={0}
       onKeyDown={focusInput}
     >
       <input
         data-testid="range-input-number-input"
+        tabIndex={0}
         className={styles.rangeInput__input}
         ref={inputRef}
         type="number"
@@ -32,8 +34,8 @@ const RangeInput = ({
         max={max}
         readOnly={readOnly}
         value={value}
-        onBlur={onBlur}
-        onChange={(ev) => onChange(parseInt(ev.target.value || 0, 10))}
+        onBlur={(ev) => onBlur(ev.target.value)}
+        onChange={(ev) => onChange(ev.target.value)}
       />
       <span>{currency}</span>
     </div>
@@ -42,7 +44,7 @@ const RangeInput = ({
 RangeInput.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   onChange: PropTypes.func.isRequired,
   currency: PropTypes.string,
   onBlur: PropTypes.func,

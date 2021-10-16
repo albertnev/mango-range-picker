@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 export default {
   min: PropTypes.number,
   max: PropTypes.number,
+  minHandlerValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  maxHandlerValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   rangeValues: (props) => {
     if (
       props.min === undefined &&
