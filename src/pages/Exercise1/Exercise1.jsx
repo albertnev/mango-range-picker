@@ -1,6 +1,10 @@
 import React from 'react';
 import { Range } from '../../components/Range';
-import { serviceUrl } from '../../shared/constants';
+import {
+  serviceUrl,
+  loadingMessage,
+  fetchErrorMessage,
+} from '../../shared/constants';
 import useFetchData from '../../hooks/useFetchData';
 import styles from '../../styles/global.scss';
 
@@ -13,14 +17,9 @@ const Exercise1 = () => {
 
   return (
     <div style={{ padding: 20 }}>
-      {hasError && (
-        <div>
-          There has been an error while trying to fetch the server. Please,
-          refresh the page.
-        </div>
-      )}
+      {hasError && <div>{fetchErrorMessage}</div>}
       {isLoading ? (
-        <div>Loading...</div>
+        <div>{loadingMessage}</div>
       ) : (
         <>
           <h1 className={styles.page__title}>Price Range: free range</h1>
