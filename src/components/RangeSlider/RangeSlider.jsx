@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import rangePropTypes from '../../shared/rangePropTypes';
 import useRangeRefs from '../../hooks/useRangeRefs';
 import styles from './styles.scss';
@@ -136,8 +137,13 @@ const RangeSlider = ({
   );
 };
 
-RangeSlider.propTypes = rangePropTypes;
+RangeSlider.propTypes = {
+  ...rangePropTypes,
+  onMinValueChange: PropTypes.func.isRequired,
+  onMaxValueChange: PropTypes.func.isRequired,
+};
 
+/* eslint-disable react/default-props-match-prop-types */
 RangeSlider.defaultProps = {
   min: undefined,
   max: undefined,
@@ -145,5 +151,6 @@ RangeSlider.defaultProps = {
   maxHandlerValue: undefined,
   rangeValues: [],
 };
+/* estlint-enable react/default-props-match-prop-types */
 
 export default RangeSlider;

@@ -1,0 +1,36 @@
+.markdown__container {
+  padding: 20px;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    margin-top: 16px;
+  }
+
+  img {
+    display: none;
+  }
+
+  ul,
+  p {
+    margin: 10px;
+  }
+
+  ul {
+    padding-left: 40px;
+  }
+
+  pre {
+    margin: 0 20px;
+    background-color: #f3f3f3;
+    padding: 10px;
+  }
+
+  .octicon-link {
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+  }
+}
