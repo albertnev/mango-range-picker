@@ -62,11 +62,11 @@ describe('RangeInput component', () => {
     expect(screen.getByTestId('range-input-number-input')).toHaveFocus();
   });
 
-  it('executes the provided onChange method when the value changes with the value parsed to int', () => {
+  it('executes the provided onChange method when the value changes', () => {
     const textToWrite = '10';
 
     writeInInput(screen.getByTestId('range-input-number-input'), textToWrite);
-    expect(onChange).toHaveBeenCalledWith(parseInt(textToWrite, 10));
+    expect(onChange).toHaveBeenCalledWith(textToWrite);
   });
 
   it('executes the provided onBlur method when the input loses focus', () => {
