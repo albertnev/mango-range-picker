@@ -35,6 +35,11 @@ const RangeInput = ({
         readOnly={readOnly}
         value={value}
         onBlur={(ev) => onBlur(ev.target.value)}
+        onKeyUp={(ev) => {
+          if (ev.key === 'Enter') {
+            onBlur(ev.target.value);
+          }
+        }}
         onChange={(ev) => onChange(ev.target.value)}
       />
       <span>{currency}</span>

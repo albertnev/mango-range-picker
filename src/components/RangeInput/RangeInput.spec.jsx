@@ -76,6 +76,13 @@ describe('RangeInput component', () => {
     expect(onBlur).toHaveBeenCalled();
   });
 
+  it('executes the provided onBlur method when the Enter key is pressed', () => {
+    const input = screen.getByTestId('range-input-number-input');
+    userEvent.type(input, '{enter}');
+
+    expect(onBlur).toHaveBeenCalled();
+  });
+
   it('does not allow to change value when it has readOnly set to true', () => {
     rerender(<InputWrapper value={6} readOnly />);
 

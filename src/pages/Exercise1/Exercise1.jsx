@@ -1,32 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Range } from '../../components/Range';
-import {
-  serviceUrl,
-  loadingMessage,
-  fetchErrorMessage,
-} from '../../shared/constants';
-import useFetchData from '../../hooks/useFetchData';
-import styles from '../../styles/global.scss';
+import { serviceUrl } from '../../shared/constants';
+import { Exercise } from '../../containers/Exercise';
 
-const Exercise1 = () => {
-  const {
-    data = {},
-    isLoading,
-    hasError,
-  } = useFetchData(`${serviceUrl}/min-max`);
+const RangeComponent = ({ data }) => (
+  <Range min={data.min} max={data.max} minHandlerValue={20} />
+);
 
-  return (
-    <div style={{ padding: 20 }}>
-      {hasError && <div>{fetchErrorMessage}</div>}
-      {isLoading ? (
-        <div>{loadingMessage}</div>
-      ) : (
-        <>
-          <h1 className={styles.page__title}>Price Range: free range</h1>
-          <Range min={data.min} max={data.max} minHandlerValue={20} />
-        </>
-      )}
-    </div>
-  );
+RangeComponent.propTypes = {
+  data: PropTypes.shape({
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+  }).isRequired,
 };
+
+const Exercise1 = () => (
+  <Exercise
+    component={RangeComponent}
+    title="Price Range: free range"
+    fetchUrl={`${serviceUrl}/min-max`}
+  />
+);
+
 export default Exercise1;

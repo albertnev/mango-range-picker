@@ -1,37 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Range } from '../../components/Range';
-import {
-  serviceUrl,
-  loadingMessage,
-  fetchErrorMessage,
-} from '../../shared/constants';
-import useFetchData from '../../hooks/useFetchData';
-import styles from '../../styles/global.scss';
+import { serviceUrl } from '../../shared/constants';
+import { Exercise } from '../../containers/Exercise';
 
-const Exercise1 = () => {
-  const {
-    data: { rangeValues = [] } = {},
-    isLoading,
-    hasError,
-  } = useFetchData(`${serviceUrl}/range-values`);
-
+const RangeComponent = ({ data }) => {
+  const { rangeValues } = data;
   return (
-    <div style={{ padding: 20 }}>
-      {hasError && <div>{fetchErrorMessage}</div>}
-      {isLoading ? (
-        <div>{loadingMessage}</div>
-      ) : (
-        <>
-          <h1 className={styles.page__title}>Price Range: fixed values</h1>
-          <Range
-            min={rangeValues[0]}
-            max={rangeValues[rangeValues.length - 1]}
-            rangeValues={rangeValues}
-          />
-        </>
-      )}
-    </div>
+    <Range
+      min={rangeValues[0]}
+      max={rangeValues[rangeValues.length - 1]}
+      rangeValues={rangeValues}
+    />
   );
 };
 
-export default Exercise1;
+RangeComponent.propTypes = {
+  data: PropTypes.shape({
+    rangeValues: PropTypes.arrayOf(PropTypes.number).isRequired,
+  }).isRequired,
+};
+
+const Exercise2 = () => (
+  <Exercise
+    component={RangeComponent}
+    title="Price Range: fixed values"
+    fetchUrl={`${serviceUrl}/range-values`}
+  />
+);
+
+export default Exercise2;
