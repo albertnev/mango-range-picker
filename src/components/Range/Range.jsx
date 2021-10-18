@@ -53,26 +53,19 @@ const Range = ({
       style={{ width: size }}
       className={styles.range__container}
     >
-      <div className={styles.range__input_container}>
-        <RangeInput
-          min={min}
-          max={max}
-          currency=""
-          value={inputMinValue}
-          readOnly={!!rangeValues.length}
-          onChange={updateMinValue}
-          onBlur={sanitizeMinValue}
-        />
-        {' - '}
-        <RangeInput
-          min={min}
-          max={max}
-          value={inputMaxValue}
-          readOnly={!!rangeValues.length}
-          onChange={updateMaxValue}
-          onBlur={sanitizeMaxValue}
-        />
-      </div>
+      {/* <div className={styles.range__input_container}> */}
+      <RangeInput
+        min={min}
+        max={max}
+        currency="€"
+        value={inputMinValue}
+        readOnly={!!rangeValues.length}
+        onChange={updateMinValue}
+        onBlur={sanitizeMinValue}
+      />
+      {/* {' - '} */}
+
+      {/* </div> */}
       <RangeSlider
         min={min}
         max={max}
@@ -81,6 +74,14 @@ const Range = ({
         maxHandlerValue={maxValue}
         onMinValueChange={sanitizeMinValue}
         onMaxValueChange={sanitizeMaxValue}
+      />
+      <RangeInput
+        min={min}
+        max={max}
+        value={inputMaxValue}
+        readOnly={!!rangeValues.length}
+        onChange={updateMaxValue}
+        onBlur={sanitizeMaxValue}
       />
     </div>
   );
@@ -98,7 +99,7 @@ Range.defaultProps = {
   minHandlerValue: undefined,
   maxHandlerValue: undefined,
   rangeValues: [],
-  size: 250,
+  size: 300,
 };
 /* estlint-enable react/default-props-match-prop-types */
 

@@ -1,5 +1,6 @@
 .rangeInput__container {
   display: inline-block;
+  width: 25%;
 }
 
 .rangeInput__input {
@@ -7,6 +8,7 @@
   -moz-appearance: textfield;
   text-align: center;
   display: inline-block;
+  width: 70%;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {

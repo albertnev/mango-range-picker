@@ -7,9 +7,12 @@ $borderWidth: 2px;
 
 .slider__wrapper {
   position: relative;
-  padding-left: calc(#{$handlerBiggerSize} / 2);
   height: $handlerBiggerSize;
   box-sizing: initial;
+  display: inline-block;
+  width: 45%;
+  vertical-align: middle;
+  margin: 0 1%;
 }
 
 .slider__container {
